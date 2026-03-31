@@ -99,6 +99,8 @@ class WordNet:
         idsA = self._noun_to_synset_ids[nounA]
         idsB = self._noun_to_synset_ids[nounB]
         ancestor_id = self._sap.ancestor(idsA, idsB)
+        if ancestor_id == -1:
+            raise ValueError("No common ancestor found")
         return self._id_to_synset[ancestor_id]
 
 if __name__ == "__main__":
