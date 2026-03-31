@@ -1,0 +1,10 @@
+0,entity
+1,physical_entity
+2,abstraction
+3,thing
+4,object
+5,whole
+6,artifact
+7,instrumentality
+8,device
+9,machine

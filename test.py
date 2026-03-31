@@ -3,24 +3,34 @@ from outcast import Outcast
 
 def main():
     print("Loading WordNet Lexicon from mock text files...")
-    wordnet = WordNet("synsets.txt", "hypernyms.txt")
-    print("Successfully loaded WordNet!")
+
+    synsets_path = "synsets.txt"
+    hypernyms_path = sys.argv[2]
     
-    print(f"Total nouns in our mini dictionary: {len(list(wordnet.nouns()))}")
+    wordnet = WordNet(synsets_path, hypernyms_path)
+    print("WordNet loaded successfully!\n")
+
+    nouns = list(wordnet.nouns())
+    print("All nouns:", nouns)
+
+    print("\nTotal nouns:", len(nouns))
     
-    noun_a = "dog"
-    noun_b = "cat"
+    noun_a = "machine"
+    noun_b = "device"
+
     print(f"\nDistance between '{noun_a}' and '{noun_b}': {wordnet.distance(noun_a, noun_b)}")
+
     print(f"SAP (common ancestor) between '{noun_a}' and '{noun_b}': {wordnet.sap(noun_a, noun_b)}")
     
-    noun_c = "dog"
-    noun_d = "table"
+    noun_c = "object"
+    noun_d = "machine"
+
     print(f"\nDistance between '{noun_c}' and '{noun_d}': {wordnet.distance(noun_c, noun_d)}")
     print(f"SAP between '{noun_c}' and '{noun_d}': {wordnet.sap(noun_c, noun_d)}")
 
     outcast = Outcast(wordnet)
-    nouns = ["dog", "cat", "bird", "table"]
-    print("\nTesting Outcast with array:", nouns)
+    test_nouns = ["entity", "object", "machine"]
+    print("\nTesting Outcast with array:", test_nouns)
     print("Outcast is:", outcast.outcast(nouns))
 
 if __name__ == "__main__":

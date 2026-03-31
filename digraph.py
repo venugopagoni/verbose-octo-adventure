@@ -26,7 +26,7 @@ class Digraph:
 
     def adj(self, v: int) -> list[int]:
         self._validate_vertex(v)
-        return self._adj[v]
+        return list(self._adj[v])
 
     def outdegree(self, v: int) -> int:
         self._validate_vertex(v)
